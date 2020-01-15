@@ -28,15 +28,15 @@ public class HomeController {
 		message.name = messageForm.getName();
 		message.message = messageForm.getMessage();
 		messageService.save(message);
-//		modelMap.addAttribute("message", messageForm.getName() + "さんが" +
-//				messageForm.getMessage() + "と入力しました");
 
 		return "redirect:/" ;
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public String destroy(@PathVariable("id") Long id) {
+//	@DeleteMapping("{id}")
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String destroy(@PathVariable Long id) {
 		 messageService.delete(id);
+
 		 return "redirect:/" ;
     }
 }
